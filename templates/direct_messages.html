@@ -1,0 +1,97 @@
+<div class="wrappermsg" id="dir_content" style="display:block; position:absolute;">
+            <div class="containermsg" style="width:100%; height:75%">
+                <div class="head">
+                    <p class="directmsg1">Direct Messages</p>
+                </div>
+
+                <div class="left" style="width:20%;">
+                    <ul class="people">
+                        <li class="person" data-chat="person999" style="padding:0 !important; background-color:#fff !important;">
+                                <button style="width: 100%;
+    height: 100%;
+    padding: 10%;     background: #e8e8e8;
+    border: 0px;    ">Create new message</button>
+                                <span class="name"></span>
+                                <span class="time"></span>
+                                <span class="preview"></span>
+                            </li>
+                        {% for message in inboxes %}
+                <li class="person" data-chat="person{{message.inbox_id}}">
+                    <img src="data:image;base64, {{ message.profilepic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" alt="" />
+                    <input type="text" name="id" id="personid{{message.username}}" value="{{message.inbox_id}}" style="width: 75%; display:none;" required/>
+                    <span class="name">{{message.username}}</span>
+                    <span class="preview">{{message.latest}}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="right" style="width:80%;">
+            <div class="top" style="margin-bottom:1em;"><span>To: <input type="text" name="name" id="user" {% if username %} value="{{username}}" {% endif %} required/></span></div>
+            <div class="help" id="help" style="overflow-y:auto; max-height: 480px;">
+            <div class="chat" data-chat="person999">
+            </div>
+
+            {% for message in messages %}
+            <div style="border-width:0px; border-color:0px; border:0px; height:auto; padding:0 35px 20px;" class="chat" data-chat="person{{message.inbox_id}}">
+                {% if message.from == 'Me' %}
+                <div class="bubble me" style="    animation-duration: 0.15s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    word-break: break-all;">
+                    {{message.content}}
+                </div>
+                <div style="font-size:10px; text-align:right;">{{message.date}}</div>
+                {% elif message.from == 'Other_user' %}
+                <div class="bubble you" style="    animation-duration: 0.15s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    word-break: break-all;">
+                    {{message.content}}
+                </div>
+                <div style="font-size:10px;">{{message.date}}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            </div>
+                    <div class="write">
+                        <input type="text" id="content" name="content" style="width: 75%;" required/>
+                        <button class="btn pull-right" id="sendbutton" style="padding: 10px 12px;">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+<script>
+{% if id %}
+    $('.chat[data-chat=person{{id}}]').addClass('active-chat');
+    $('.person[data-chat=person{{id}}]').addClass('active');
+    $(document).ready(function() {
+        var elem = document.getElementById('help');
+        elem.scrollTop = elem.scrollHeight;
+    });
+{% else %}
+    $('.chat[data-chat=person1]').addClass('active-chat');
+    $('.person[data-chat=person1]').addClass('active');
+{% endif %}
+
+$('.left .person').mousedown(function(){
+    if ($(this).hasClass('.active')) {
+        return false;
+    } else {
+        var findChat = $(this).attr('data-chat');
+        var personName = $(this).find('.name').text();
+        $('#user').val(personName);
+        $('.chat').removeClass('active-chat');
+        $('.left .person').removeClass('active');
+        $(this).addClass('active');
+        $('.chat[data-chat = '+findChat+']').addClass('active-chat');
+    }
+});
+</script>

@@ -1,0 +1,359 @@
+{% extends 'base/base.html' %}
+{% block notifications %}
+    <li class="dropdown" id="new">
+      <a href="#" onmouseover="mark_read();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if unread != 0 %}<span style="    position: absolute;
+    top: 0;
+    right: 8px;
+    width: 2.1em;
+    height: 2.1em;
+    font-size: 10px;
+    background: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    text-align: center;">{{unread}}</span>{% endif %}<span class="fa fa-bell nav-icon" aria-hidden="true">
+      </span></a>
+      <ul class="dropdown-menu notify-drop" style="left:auto; right:0;">
+        <div class="notify-drop-title">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+            </div>
+        </div>
+        <!-- end notify title -->
+        <!-- notify content -->
+        <div class="drop-content">
+            {% for notification in notifications %}
+            <li {% if notification.unread is none %} style="background-color:#e8e8e8; {% endif %}">
+                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                {% if notification.type == 'owner_borrow_return_verification' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'renter_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'owner_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. Leave a rating.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Thank you for returning the book.
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">Leave a rating</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type in 'borrower_borrow_return_' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have accepted the request of <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_code', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Your request has been accepted by<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_input', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have borrowed<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has borrowed your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have rented<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has rented your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have purchased <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has purchased your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrow_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'rent_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'purchase_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_follow' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has followed you.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'follower_new_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has added a new
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% endif %}
+
+            </li>
+            {% endfor %}
+        </div>
+            <div class="notify-drop-footer text-center">
+                <a href="{{ url_for('notifications_all') }}">View all</a>
+            </div>
+        </ul>
+    </li>
+{% endblock %}
+{% block content %}
+<!-- banner -->
+<div class="banner-bg-agileits">
+    <div class='split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side'>
+      <div>
+        <div class='text-content'>
+          <div class='big'>BOOKSHELF</div>
+        </div>
+      </div>
+    </div>
+    <div class='split-pane col-xs-6 col-sm-6 col-lg-6 frontend-side'>
+      <div>
+        <div class='text-content'>
+          <div class="bold"></div>
+        </div>
+      </div>
+    </div>
+    <div id='split-pane-or'>
+      <div>
+      </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- breadcrumbs -->
+<div class="crumbs text-center" style="padding-top:0% !important;">
+    <div class="container">
+        <div class="row">
+            <ul class="btn-group btn-breadcrumb bc-list">
+                <li class="btn btn1">
+                    <a href="index.html">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </a>
+                </li>
+                <li class="btn btn2">
+                    <a href="#">Genre</a>
+                </li>
+                <li class="btn btn3">
+                    <a href="{{ url_for('view_genre', genre_name=genre_name, page_num=1) }}">{{ genre_name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- about -->
+<div class="wrapper_top_shop" style="min-height:55vh; padding-bottom:60px;">
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h4 class="rad-txt">
+                <span class="big-tab pull-left">{{ genre_name }}</span>
+            </h4>
+            <!-- product-sec1 -->
+                <!-- row1-->
+                {% for book in books %}
+                        <div class="col-md-3 col-xs-12 product-men" style="margin-top:2em;">
+                            <div class="product-chr-info chr">
+                                <div class="thumbnail">
+                                    <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
+                                        <img onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" src="{{book.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                    </a>
+                                    <div class="book-overlay">
+                                        <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                        <div class="book-text">
+                                            <h4>{{ book.totalRate}}/5.0</h4>
+                                            <h4>{{ book.genre }}</h4>
+                                            <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <h4>{{ book.title }}</h4>
+                                    <p class="author">{{ book.author_name}}</p>
+                                    <p><a href="{{ url_for('view_profile', username=book.owner_username) }}" style="margin:auto; color: #777;">{{ book.owner_fname }} {{ book.owner_lname }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                {% else %}
+                <h2 style="text-align:center;">No books to display</h2>
+                {% endfor %}
+                <!-- //row1 -->
+                <!-- row2 -->
+        </div>
+    </div>
+    <nav aria-label="Page navigation example" style="text-align:center;">
+      <ul class="pagination">
+          <li class="page-item">
+              <a class="page-link" href="{{ url_for('view_genre', page_num=1, genre_name=genre_name) }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+       {% for page in paginate %}
+            {% if page %}
+              <li class="page-item"><a class="page-link" href="{{ url_for('view_genre', genre_name=genre_name, page_num=page) }}">{{ page }}</a></li>
+              {% else %}
+              <li class="page-item"><a class="page-link">...</a></li>
+            {% endif %}
+
+          {% endfor %}
+          <li class="page-item">
+          <a class="page-link" href="{{ url_for('view_genre', genre_name=genre_name, page_num=totalbooks-1) }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+</div>
+                <!-- //product-sec1 -->
+                <div class="clearfix"></div>
+<!-- //about ends here -->
+<!-- about bottom -->
+    <div class="container-fluid">
+        <!-- about-bottom grid1 -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //about container ends here-->
+</div>
+<!--//about bottom ends here-->
+<!-- //footer -->
+{% endblock %}
+

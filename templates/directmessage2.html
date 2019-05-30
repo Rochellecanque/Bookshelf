@@ -1,0 +1,40 @@
+
+    {% for message in messages %}
+    <div style="border-width:0px; border-color:0px; border:0px; height:auto; padding:0 35px 20px;" class="chat" data-chat="person{{message.inbox_id}}">
+        {% if message.from == 'Me' %}
+        <div class="bubble me" style="    animation-duration: 0.15s;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 600px;
+            word-break: break-all;">
+                            {{message.content}}
+        </div>
+                        {% elif message.from == 'Other_user' %}
+        <div class="bubble you" style="    animation-duration: 0.15s;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 600px;
+            word-break: break-all;">
+            {{message.content}}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <script>
+        {% if id %}
+            $('.chat[data-chat=person{{id}}]').addClass('active-chat');
+            $('.person[data-chat=person{{id}}]').addClass('active');
+            $(document).ready(function() {
+                var elem = document.getElementById('help');
+                elem.scrollTop = elem.scrollHeight;
+            });
+        {% else %}
+            $('.chat[data-chat=person1]').addClass('active-chat');
+            $('.person[data-chat=person1]').addClass('active');
+        {% endif %}
+    </script>

@@ -1,0 +1,480 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Bookshelf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+
+    <link href="{{url_for('static', filename='css/bootstrap.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- shop css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/directmsg.css')}}">
+    <link href="{{url_for('static', filename='css/shop.css')}}" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/flexslider.css')}}" type="text/css" media="screen" />
+    <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="{{url_for('static', filename='css/font-awesome.css')}}" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    <!-- logo -->
+    <link href="//fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <!-- titles -->
+    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+    <!-- body -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen_shop.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/addbook.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
+     <link rel="stylesheet" href="{{url_for('static', filename='css/comment.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/ratings.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/borrow.css')}}">
+      <link rel="stylesheet" href="{{url_for('static', filename='css/codestyle.css')}}">
+    <!-- //online-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div id="home">
+        <!-- header -->
+        <!-- navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="main-nav">
+                <div class="container">
+
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Chronicle</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1>
+                            <a class="navbar-brand" href="{{ url_for('home') }}">Bookshelf</a>
+                        </h1>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse nav-right">
+                        <ul class="nav navbar-nav navbar-left cl-effect-15">
+                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                            <li class="hidden">
+                                <a class="page-scroll" href="#page-top"></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Genres
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu multi-column columns-3" style="left: auto;
+                                                right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Action', page_num=1) }}">Action</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Adventure', page_num=1) }}">Adventure</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Drama', page_num=1) }}">Drama</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Horror', page_num=1) }}">Horror</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mystery', page_num=1) }}">Mystery</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mythology', page_num=1) }}">Mythology</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Non-Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Biography', page_num=1) }}">Biography</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Essay', page_num=1) }}">Essay</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Journalism', page_num=1) }}">Journalism</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Personal Narrative', page_num=1) }}">Personal Narrative</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Reference Book', page_num=1) }}">Reference Book</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Speech', page_num=1) }}">Speech</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Educational</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='English', page_num=1) }}">English</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Math', page_num=1) }}">Math</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='History', page_num=1) }}">History</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Science', page_num=1) }}">Science</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">books
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ url_for('addbook') }}">Add a book</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('add_unpublishedbook') }}">Add unpublished book</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('store', page_num=1) }}">Browse</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('wishlist') }}">Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('waitinglist') }}">Your Requests</a>
+                                    </li>
+                                     <li>
+                                        <a href="{{ url_for('requestlist') }}">Book Requests</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('profile') }}" title="Profile">
+                                    <span class="fa fa-user nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('message_page') }}" title="Direct Messages">
+                                    <span class="fa fa-envelope nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <!-- nofication -->
+                            {% block notifications %}
+
+                            {% endblock %}
+                            <!--/ notification -->
+                            <!-- search-bar -->
+                        <div class="search-bar-agileits">
+                            <div class="cd-main-header">
+                                <ul class="cd-header-buttons">
+                                    <li>
+                                        <a class="cd-search-trigger" href="#cd-search">
+                                            <span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- cd-header-buttons -->
+                            </div>
+                            <div id="cd-search" class="cd-search">
+                                <form action="{{ url_for('store_search', page_num=1) }}" method="post">
+                                    <input name="search" type="search" placeholder="Type and Hit Enter...">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- //search-bar ends here -->
+                            <!-- logout -->
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">
+                                        <b class="caret" style="border-left: 8px solid transparent;
+                                                            border-right: 8px solid transparent;
+                                                            border-top: 8px dashed"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ url_for('activity_logs') }}">activity logs</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url_for('logout') }}">logout</a>
+                                        </li>
+                                    </ul>
+                            </li>
+                        <!-- //logout -->
+                        </ul>
+
+                        <!-- shopping cart -->
+
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- /.container -->
+            </div>
+        </nav>
+        <!-- //navbar ends here -->
+        <!-- about -->
+        {% block content %}
+        {% endblock %}
+        <!-- //about ends here -->
+        <!--//about bottom-->
+        <!--//about bottom ends here-->
+        <!-- //footer -->
+        <footer class="cpy-right footer">
+            <p>© 2018 Chronicle. All rights reserved | Design by
+                <a href="http://w3layouts.com"> W3layouts.</a>
+            </p>
+        </footer>
+    <!-- //home -->
+    <!-- js -->
+
+    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+    <!-- //js -->
+    <!--search jQuery-->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <!--search jQuery-->
+    <!-- cart-js -->
+    <!-- //cart-js -->
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
+    <!-- //fixed-scroll-nav-js -->
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+    <!-- start-smooth-scrolling -->
+    <script src="{{url_for('static', filename='js/move-top.js')}}"></script>
+    <script src="{{url_for('static', filename='js/easing.js')}}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+        <!-- FlexSlider -->
+	<script src="{{url_for('static', filename='js/jquery.flexslider.js')}}"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function () {
+			$('.flexslider1').flexslider({
+				animation: "slide",
+				controlNav: "thumbnails"
+			});
+		});
+	</script>
+	<!-- //FlexSlider-->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script>
+        $('#directmsg').click(function() {
+            $('html').css({
+                'overflow': 'hidden',
+                'height': '100%',
+                'margin': '0'
+            });
+            $('body').css({
+                'overflow': 'hidden',
+                'height': '100%',
+                'margin': '0',
+                '-ms-scroll-limit': '0 0 0 0'
+            });
+            $('#dir_content').css({
+                'display': 'block'
+            });
+            $('#cpyright').css({
+                'position': 'relative'
+            });
+        });
+    </script>
+    <script>
+        $('#return').click(function() {
+            $('html').css({
+                'overflow': 'visible',
+                'height': '100%',
+                'margin': '0'
+            });
+            $('body').css({
+                'overflow': 'visible',
+                'height': '100%',
+                'margin': '0',
+                '-ms-scroll-limit': '100px 100px 100px 0px'
+            });
+            $('#dir_content').css({
+                'display': 'none'
+            });
+            $('#cpyright').css({
+                'position': 'absolute'
+            });
+        });
+    </script>
+    <script>
+          $('#methodlist').change(function(){
+        if( $(this).val() == 'For Sale'){
+            $('#pricing').append('<input placeholder="Price of the Book" name="price" id="sale" type="text" />');
+            $('#rent').remove();
+            $('#borrow').remove();
+        }else if( $(this).val() == 'For Rent'){
+            $('#pricing').append('<input placeholder="Price Rate (Price per day)" name="price" id="rent" type="text" />');
+            $('#sale').remove();
+            $('#borrow').remove();
+
+        }else{
+            $('#pricing').append('<input value="0" style="display:none;" id="borrow" name="price" type="text" />');
+            $('#rent').remove();
+            $('#sale').remove();
+        }
+    });
+    </script>
+    <script>
+          $('#methodList2').change(function(){
+        if( $(this).val() == 'For Sale'){
+            $('#pricing2').append('<input placeholder="Price of the Book" name="price" class="form-control" style="width:45%; height:28px;" id="sale" type="text" />');
+            $('#rent').remove();
+            $('#borrow').remove();
+        }else if( $(this).val() == 'For Rent'){
+            $('#pricing2').append('<input placeholder="Price Rate (Price per day)" class="form-control" style="width:45%; height:28px;" name="price" id="rent" type="text" />');
+            $('#sale').remove();
+            $('#borrow').remove();
+
+        }else{
+            $('#pricing2').append('<input value="0" class="form-control" style="width:45%; height:28px;" name="price" id="borrow" type="text" readonly/>');
+            $('#rent').remove();
+            $('#sale').remove();
+        }
+    });
+    function yesnoCheck() {
+    if (document.getElementById('ForRent').checked) {
+        document.getElementById('pricing').style.display = 'block';
+    }
+    else document.getElementById('pricing').style.display = 'none';
+
+    }
+    function yesnoCheck2() {
+    if (document.getElementById('ForSale').checked) {
+        document.getElementById('pricing2').style.display = 'block';
+    }
+    else document.getElementById('pricing2').style.display = 'none';
+
+    }
+    function yesnoCheck3() {
+    if (document.getElementById('ForSale2').checked) {
+        document.getElementById('pricing3').style.display = 'block';
+    }
+    else document.getElementById('pricing3').style.display = 'none';
+
+    }
+    function yesnoCheck4() {
+    if (document.getElementById('ForRent2').checked) {
+        document.getElementById('pricing4').style.display = 'block';
+    }
+    else document.getElementById('pricing4').style.display = 'none';
+
+    }
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#checkBtn').click(function() {
+          checked = $("input[type=checkbox]:checked").length;
+
+          if(!checked) {
+            alert("You must check at least one checkbox.");
+            return false;
+          }
+
+        });
+    });
+
+    </script>
+        <script>
+        $(document).ready(function() {
+            refresh();
+        });
+
+        function refresh()
+        {
+            setTimeout( function() {
+              req = $.ajax({
+                    url : 'http://localhost:8080/update',
+                    type : 'GET'
+                });
+                req.done(function(data) {
+
+                    //$('#memberNumber'+member_id).text(data.member_num);
+                    $('#new').html(data);
+
+                });
+              refresh();
+            }, 20000);
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            refresh();
+        });
+
+        function refresh()
+        {
+            setTimeout( function() {
+              req = $.ajax({
+                    url : 'http://localhost:8080/update_message',
+                    type : 'GET'
+                });
+                req.done(function(data) {
+
+                    //$('#memberNumber'+member_id).text(data.member_num);
+                    $('#dir_content').html(data);
+
+                });
+              refresh();
+            }, 20000);
+        }
+    </script>
+    <script src="{{url_for('static', filename='js/ratings.js')}}"></script>
+    <script src='https://robbyk.com/assets/pen.js'></script>
+    <script src="{{url_for('static', filename='js/SmoothScroll.min.js')}}"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- about bottom grid Numscroller -->
+
+    <script src="{{url_for('static', filename='js/numscroller-1.0.js')}}"></script>
+    <script src="{{url_for('static', filename='js/directmsg.js')}}"></script>
+    <!-- //about bottom grid Numscroller -->
+    <!-- Bootstrap core JavaScript
+ ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+</body>
+
+</html>

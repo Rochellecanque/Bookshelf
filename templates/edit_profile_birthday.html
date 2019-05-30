@@ -1,0 +1,494 @@
+{% extends 'base/profile_base.html' %}
+{% block notifications %}
+    <li class="dropdown" id="new">
+      <a href="#" onmouseover="mark_read();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if unread != 0 %}<span style="    position: absolute;
+    top: 0;
+    right: 8px;
+    width: 2.1em;
+    height: 2.1em;
+    font-size: 10px;
+    background: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    text-align: center;">{{unread}}</span>{% endif %}<span class="fa fa-bell nav-icon" aria-hidden="true">
+      </span></a>
+      <ul class="dropdown-menu notify-drop" style="left:auto; right:0;">
+        <div class="notify-drop-title">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+            </div>
+        </div>
+        <!-- end notify title -->
+        <!-- notify content -->
+        <div class="drop-content">
+            {% for notification in notifications %}
+            <li {% if notification.unread is none %} style="background-color:#e8e8e8; {% endif %}">
+                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                {% if notification.type == 'owner_borrow_return_verification' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'renter_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'owner_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. Leave a rating.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Thank you for returning the book.
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">Leave a rating</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type in 'borrower_borrow_return_' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have accepted the request of <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_code', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Your request has been accepted by<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_input', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have borrowed<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has borrowed your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have rented<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has rented your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have purchased <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has purchased your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrow_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'rent_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'purchase_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_follow' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has followed you.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'follower_new_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has added a new
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% endif %}
+
+            </li>
+            {% endfor %}
+        </div>
+            <div class="notify-drop-footer text-center">
+                <a href="{{ url_for('notifications_all') }}">View all</a>
+            </div>
+        </ul>
+    </li>
+{% endblock %}
+{% block content %}
+        <div class="clearfix"></div>
+        <div class="main">	
+            <div class="w3_agile_main_grids">
+                <div class="w3layouts_main_grid_left">
+                    <div class="w3_main_grid_left_grid">
+                        <h2>{{user.first_name}} {{user.last_name}}</h2>
+                        <p>{{ user.username}}</p>
+                        <div class="w3l_figure">
+                            <img src="data:image;base64, {{ profilepic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" alt="Avatar" class="profileimg" alt=" " />
+                            <form method=POST enctype=multipart/form-data action="{{ url_for('add_profile_pic') }}" style="margin-top:1em;">
+                                <input type="file" name="photo" style="width: 60%; float:left; margin-left: 2em; background:white;">
+                                <input type="submit" value="Submit" style="padding:5px;">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3layouts_main_grid_right">
+                    <div class="w3ls_main_grid_right_grid">
+                        <div id="parentHorizontalTab">
+                            <ul class="resp-tabs-list hor_1 manage" style="top:60%;">
+                                <li><i class="fa fa-user" aria-hidden="true"></i>About me</li>
+                                <li><i class="fa fa-briefcase" aria-hidden="true"></i>Bookshelf</li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i>User Review</li>
+                                <li><i class="fa fa-map-marker" aria-hidden="true"></i>Contact me</li>
+                            </ul>
+                            <div class="resp-tabs-container hor_1">
+                                <div class="agileits_main_grid_right_grid">
+                                <form class="form-horizontal" action="{{ url_for('edit_profile') }}" method="post">
+                                <button type="submit" class="btn btn-success pull-right btn-profile" style="margin-right: 1em;">Save Changes</button>
+                                <a href="{{ url_for('profile') }}" class="btn btn-success pull-right btn-profile" id="btn-profile">Cancel</a>
+                                    <p class="agileinfo_para"></i></p>
+                                    <div class="alert alert-danger alert-dismissible fade in" style="margin-top:1em; display:{{display}};">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>You must be 18 or above.</strong>
+                                    </div>
+                                    <div class="agileits_skills">
+
+                                        <h3>Personal Information</h3>
+                                        <div class="w3_agileits_skills_grid">
+                                            <ul>
+                                                <li style="height:50px">
+                                                <div class="form-group" style="width:100%; height:50px;">
+                                                    <div class="" style="float:left; margin-left:3px;">Full Name</div>
+                                                        <div class="col-md-4 col-sm-4 col-xs-4" style="float:left;">
+                                                            <input type="text" style="height:34px;" class="form-control" name="first_name" value="{{user.first_name}}" required="">
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-4 col-xs-4" style="float:left;">
+                                                            <input type="text" style="height:34px;" class="form-control" name="last_name" value="{{user.last_name}}" required="">
+                                                        </div>
+                                                </div></li>
+                                                <li style="height:50px">
+                                                    <div class="" style="float:left;">Birthdate</div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8" style="float:right;">
+                                                            <input type="date" style="height:34px;" class="form-control" name="birth_date" value="{{bday}}" required="">
+                                                        </div></li>
+                                                <li style="height:50px">
+                                                    <div class="" style="float:left;">Gender</div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8" style="float:right;">
+                                                    <select style="height:34px;" class="form-control" name="gender" required="">
+                                                      <option value="{{user.gender}}" SELECTED>{{user.gender}}</option>
+                                                        <option value="Male">Male</option>
+                                                      <option value="Female">Female</option>
+                                                    </select>
+                                                </div></li>
+                                                <li style="height:50px">
+                                                    <div class="" style="float:left;">Address</div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8" style="float:right;">
+                                                    <input type="text" style="height:34px;" class="form-control" name="address" value="{{user.address}}" required pattern="[0-9]{11}">
+                                                </div></li>
+                                                <li style="height:50px">
+                                                    <div class="" style="float:left;">Contact Number</div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8" style="float:right;">
+                                                    <input type="text" style="height:34px;" class="form-control" name="contact_number" value="{{user.contact_number}}" required pattern="[0-9]{11}">
+                                                </div></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                 </form>
+                                </div>
+
+                                <div class="wthree_main_grid_right_grid">
+                                    <h3>My Books</h3>
+
+                                    <div class="w3_agileits_main_grid_work_grids">
+                                        {% for book in books%}
+                                        <div class="agile_main_grid_work_gridl">
+												<div class="product-chr-info chr">
+														<div class="thumbnail" style="margin-bottom:1em;">
+															<a href="{{ url_for('viewbook', book_id=book.book_id, username=user.username) }}">
+																<img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book.book_cover}}" style="height:10.1em; width:9.1em;" alt="">
+															</a>
+														</div>
+														<div class="caption">
+                                                            <div class="title">
+															<h4 style="overflow-y: hidden;  max-height:8em;">{{book.title}}</h4>
+                                                            </div>
+															<p>{{book.author_name}}</p>
+					
+														</div>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <div style="overflow: hidden;" class="w3_agileits_main_grid_work_grids">
+                                        <h1 style="color: #333A56; text-align:center; margin:1em; font-weight: 0px;
+                                                    letter-spacing: 0px;">No books to display</h1>
+                                        <a href="{{ url_for('addbook') }}" class='button' style="background:#333A56;
+                                                                                                font-weight: 800;
+                                                                                                font-size: 3em;
+                                                                                                text-align:center;
+                                                                                                border: 1px solid #333A56;
+                                                                                                border-radius: 5px;
+                                                                                                width: 100%;
+                                                                                                margin: 1em;
+                                                                                                padding: 0.7em;
+                                                                                                font-size: 1em;
+                                                                                                text-decoration: none;
+                                                                                                color: #333a56;
+                                                                                                display: inline-block;
+                                                                                                cursor: pointer;">
+                                          Add your own Book
+                                        </a>
+                                        <div class="clear"> </div>
+                                        </div>
+                                        {% endfor %}
+                                        <div class="clear"> </div>
+                                    </div>
+                                </div>
+                                <div class="wthree_main_grid_right_grid">
+                                    {% for rating in ratings %}
+                                    <h3>User Review</h3>
+                                    <div class="comments">
+                                              <div class="review" style="width:400px; height:150px;">
+                                              <div class="caption pull-left">
+                                                    <h2 style="margin-top:10%; text-align:center;">{{rating.rating}}</h2>
+                                                    <form method="POST" class="rating" action="{{url_for('rate_user', username=user.username,  _anchor='parentHorizontalTab3')}}" id="ratingsform">
+                                                        <label style="font-size:30px;">
+                                                            <input onclick="document.getElementById('ratingsform').submit();" type="radio" name="stars" value="{{rating.rating}}"/>
+                                                            <span  class="icon" value="1" data-rate="1">★</span>
+                                                            <span  class="icon" value="2" data-rate="2">★</span>
+                                                            <span  class="icon" value="3" data-rate="3">★</span>
+                                                            <span  class="icon" value="4" data-rate="4">★</span>
+                                                            <span  class="icon" value="5" data-rate="5">★</span>
+                                                        </label>
+                                                    </form>
+                                                  <div class="bottom" style="display:block;">
+                                                  <i class="fa fa-user"></i>  {{rating.numofRates}} total
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-3" style="max-width:250px; width:250px;">
+                                                <h4 class="rtitle">Rating breakdown<h6>(Total Rating: {{rating.totalRate}}/5.0)</h6></h4>
+                                                <div>
+                                                    <div class="pull-left" style="width:35px; line-height:1;">
+                                                        <div style="height:13px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
+                                                    </div>
+                                                    <div class="pull-left" style="width:180px;">
+                                                        <div class="progress" style="height:13px; margin:8px 0;">
+                                                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: {{rating.num5}}%; background: #57bb8a;">
+                                                            <span class="sr-only">{{rating.num5}}% Complete (danger)</span>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="pull-left" style="width:35px; line-height:1;">
+                                                        <div style="height:13px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
+                                                    </div>
+                                                    <div class="pull-left" style="width:180px;">
+                                                        <div class="progress" style="height:13px; margin:8px 0;">
+                                                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: {{rating.num4}}%; background: #9ace6a;">
+                                                            <span class="sr-only">{{rating.num4}} (danger)</span>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="pull-left" style="width:35px; line-height:1;">
+                                                        <div style="height:13px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
+                                                    </div>
+                                                    <div class="pull-left" style="width:180px;">
+                                                        <div class="progress" style="height:13px; margin:8px 0;">
+                                                          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: {{rating.num3}}%; background: #ffcf02;">
+                                                            <span class="sr-only">{{rating.num3}}% Complete (danger)</span>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="pull-left" style="width:35px; line-height:1;">
+                                                        <div style="height:13px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
+                                                    </div>
+                                                    <div class="pull-left" style="width:180px;">
+                                                        <div class="progress" style="height:13px; margin:8px 0;">
+                                                          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: {{rating.num2}}%; background: #ff9f02;">
+                                                            <span class="sr-only">{{rating.num2}}% Complete (danger)</span>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="pull-left" style="width:35px; line-height:1;">
+                                                        <div style="height:13px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
+                                                    </div>
+                                                    <div class="pull-left" style="width:180px;">
+                                                        <div class="progress" style="height:13px; margin:8px 0;">
+                                                          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: {{rating.num1}}%; background: #ff6f31;">
+                                                            <span class="sr-only">{{rating.num1}}% Complete (danger)</span>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="comments" style="display:block; max-width: 100%; overflow-y: auto; max-height: 330px; ">
+                                            <div class="comment-wrap">
+                                                    <div class="photo">
+                                                            <img src="data:image;base64, {{ user.profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+                                                    </div>
+                                                    <div class="comment-block">
+                                                            <form action="{{url_for('comment_user', username=user.username,  _anchor='parentHorizontalTab3')}}", method="POST">
+                                                                    <textarea name="comment" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
+                                                                    <button  style="float:right;" type="submit" class="btn btn-success">Submit</button>
+                                                            </form>
+                                                    </div>
+                                            </div>
+                                            {% for comment in comments %}
+                                            <div class="comment-wrap" style="overflow-y: auto;">
+                                                    <div class="photo">
+                                                            <img src="data:image;base64, {{ comment.profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+                                                    </div>
+                                                    <div class="comment-block">
+                                                            <p><a href="{{ url_for('view_profile', username=comment.user_username) }}" style="margin:auto; color: #777;">{{comment.user_fname}} {{comment.user_lname}}</a></p>
+                                                            <p class="comment-text">{{comment.comment}}</p>
+                                                            <div class="bottom-comment">
+                                                                    <div class="comment-date">{{comment.date}}</div>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                            {% endfor %}
+
+                                    </div>
+                                </div>
+                                <div class="wthree_main_grid_right_grid">
+                                    <h3>Books Near You</h3>
+                                    {{ map.html}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"> </div>
+			</div>
+		</div>
+	</di    v>
+        <!-- //contact -->
+{% endblock %}

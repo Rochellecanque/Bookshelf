@@ -1,0 +1,1041 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Bookshelf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+
+    <link href="{{url_for('static', filename='css/bootstrap.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- shop css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/directmsg.css')}}">
+    <link href="{{url_for('static', filename='css/shop.css')}}" type="text/css" rel="stylesheet" media="all">
+    <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="{{url_for('static', filename='css/font-awesome.css')}}" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    <!-- logo -->
+    <link href="//fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <!-- titles -->
+    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+    <!-- body -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen_shop.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
+    <link href="{{url_for('static', filename='css/profile_.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/font-awesome_profile.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/lightcase_profile.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/easy-responsive-tabs_profile.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
+ <link rel="stylesheet" href="{{url_for('static', filename='css/comment.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/ratings.css')}}">
+    <link href="//fonts.googleapis.com/css?family=Arsenal:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+body {
+    padding: 30px 0px 60px;
+}
+.panel > .list-group .list-group-item:first-child {
+    /*border-top: 1px solid rgb(204, 204, 204);*/
+}
+@media (max-width: 767px) {
+    .visible-xs {
+        display: inline-block !important;
+    }
+    .block {
+        display: block !important;
+        width: 100%;
+        height: 1px !important;
+    }
+}
+#back-to-bootsnipp {
+    position: fixed;
+    top: 10px; right: 10px;
+}
+
+
+.c-search > .form-control {
+   border-radius: 0px;
+   border-width: 0px;
+   border-bottom-width: 1px;
+   font-size: 1.3em;
+   padding: 12px 12px;
+   height: 44px;
+   outline: none !important;
+}
+.c-search > .form-control:focus {
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none;
+}
+.c-search > .input-group-btn .btn {
+   border-radius: 0px;
+   border-width: 0px;
+   border-left-width: 1px;
+   border-bottom-width: 1px;
+   height: 44px;
+}
+
+
+.c-list {
+    padding: 0px;
+    min-height: 44px;
+}
+.title {
+    display: inline-block;
+    font-size: 1.7em;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+ul.c-controls {
+    list-style: none;
+    margin: 0px;
+    min-height: 44px;
+}
+
+ul.c-controls li {
+    margin-top: 8px;
+    float: left;
+}
+
+ul.c-controls li a {
+    font-size: 1.7em;
+    padding: 11px 10px 6px;
+}
+ul.c-controls li a i {
+    min-width: 24px;
+    text-align: center;
+}
+
+ul.c-controls li a:hover {
+    background-color: rgba(51, 51, 51, 0.2);
+}
+
+.c-toggle {
+    font-size: 1.7em;
+}
+
+.name {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+.c-info {
+    padding: 5px 10px;
+    font-size: 1.25em;
+}
+    </style>
+    <!-- //online-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div id="home">
+        <!-- header -->
+        <!-- navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="main-nav">
+                <div class="container">
+
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Chronicle</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1>
+                            <a class="navbar-brand" href="{{ url_for('home') }}">Bookshelf</a>
+                        </h1>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse nav-right">
+                        <ul class="nav navbar-nav navbar-left cl-effect-15">
+                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                            <li class="hidden">
+                                <a class="page-scroll" href="#page-top"></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Genres
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu multi-column columns-3" style="left: auto;
+                                                right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Action', page_num=1) }}">Action</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Adventure', page_num=1) }}">Adventure</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Drama', page_num=1) }}">Drama</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Horror', page_num=1) }}">Horror</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mystery', page_num=1) }}">Mystery</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mythology', page_num=1) }}">Mythology</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Non-Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Biography', page_num=1) }}">Biography</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Essay', page_num=1) }}">Essay</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Journalism', page_num=1) }}">Journalism</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Personal Narrative', page_num=1) }}">Personal Narrative</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Reference Book', page_num=1) }}">Reference Book</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Speech', page_num=1) }}">Speech</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Educational</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='English', page_num=1) }}">English</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Math', page_num=1) }}">Math</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='History', page_num=1) }}">History</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Science', page_num=1) }}">Science</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">books
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ url_for('addbook') }}">Add a book</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('add_unpublishedbook') }}">Add unpublished book</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('store', page_num=1) }}">Browse</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('wishlist') }}">Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('waitinglist') }}">Your Requests</a>
+                                    </li>
+                                     <li>
+                                        <a href="{{ url_for('requestlist') }}">Book Requests</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('profile') }}" title="Profile">
+                                    <span class="fa fa-user nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('message_page') }}" title="Direct Messages">
+                                    <span class="fa fa-envelope nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <!-- nofication -->
+    <li class="dropdown" id="new">
+      <a href="#" onmouseover="mark_read();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if unread != 0 %}<span style="    position: absolute;
+    top: 0;
+    right: 8px;
+    width: 2.1em;
+    height: 2.1em;
+    font-size: 10px;
+    background: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    text-align: center;">{{unread}}</span>{% endif %}<span class="fa fa-bell nav-icon" aria-hidden="true">
+      </span></a>
+      <ul class="dropdown-menu notify-drop" style="left:auto; right:0;">
+        <div class="notify-drop-title">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+            </div>
+        </div>
+        <!-- end notify title -->
+        <!-- notify content -->
+        <div class="drop-content">
+            {% for notification in notifications %}
+            <li {% if notification.unread is none %} style="background-color:#e8e8e8; {% endif %}">
+                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                {% if notification.type == 'owner_borrow_return_verification' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'renter_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'owner_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. Leave a rating.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Thank you for returning the book.
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">Leave a rating</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type in 'borrower_borrow_return_' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have accepted the request of <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_code', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Your request has been accepted by<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_input', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have borrowed<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has borrowed your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have rented<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has rented your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have purchased <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has purchased your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrow_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'rent_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'purchase_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_follow' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has followed you.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'follower_new_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has added a new
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% endif %}
+
+            </li>
+            {% endfor %}
+        </div>
+            <div class="notify-drop-footer text-center">
+                <a href="{{ url_for('notifications_all') }}">View all</a>
+            </div>
+        </ul>
+    </li>
+                            <!--/ notification -->
+                            <!-- search-bar -->
+                        <div class="search-bar-agileits">
+                            <div class="cd-main-header">
+                                <ul class="cd-header-buttons">
+                                    <li>
+                                        <a class="cd-search-trigger" href="#cd-search">
+                                            <span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- cd-header-buttons -->
+                            </div>
+                            <div id="cd-search" class="cd-search">
+                                <form action="/search" method="post">
+                                    <input name="info" type="search" placeholder="Type and Hit Enter...">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- //search-bar ends here -->
+                            <!-- logout -->
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">
+                                        <b class="caret" style="border-left: 8px solid transparent;
+                                                            border-right: 8px solid transparent;
+                                                            border-top: 8px dashed"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ url_for('activity_logs') }}">activity logs</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url_for('logout') }}">logout</a>
+                                        </li>
+                                    </ul>
+                            </li>
+                        <!-- //logout -->
+                        </ul>
+
+                        <!-- shopping cart -->
+
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- /.container -->
+            </div>
+        </nav>
+        <!-- //navbar ends here -->
+        <!-- banner -->
+        <!-- //banner -->
+        <!-- about -->
+        <div class="wrappermsg" id="dir_content" style="display:none; z-index: 4000; position:absolute;">
+            <div class="containermsg" style="z-index:6000;">
+                <div class="head">
+                    <p class="directmsg1">Direct Messages</p>
+
+                    <button class="closebtn pull-right">
+                            <i id="return" class="fa fa-times" style="cursor: pointer; font-size: 25px;
+                            line-height: 40px;
+                            margin-left: 15px;"></i>
+                    </button>
+                    <button class="newmessage pull-right">
+                        <span style="float:right;">New Message</span>
+                    </button>
+
+
+                </div>
+                <div class="left">
+                    <ul class="people">
+                        <li class="person" data-chat="person1">
+                            <img src="https://s13.postimg.org/ih41k9tqr/img1.jpg" alt="" />
+                            <span class="name">Thomas Bangalter</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">I was wondering...</span>
+                        </li>
+                        <li class="person" data-chat="person2">
+                            <img src="https://s3.postimg.org/yf86x7z1r/img2.jpg" alt="" />
+                            <span class="name">Dog Woofson</span>
+                            <span class="time">1:44 PM</span>
+                            <span class="preview">I've forgotten how it felt before</span>
+                        </li>
+                        <li class="person" data-chat="person3">
+                            <img src="https://s3.postimg.org/h9q4sm433/img3.jpg" alt="" />
+                            <span class="name">Louis CK</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">But we’re probably gonna need a new carpet.</span>
+                        </li>
+                        <li class="person" data-chat="person4">
+                            <img src="https://s3.postimg.org/quect8isv/img4.jpg" alt="" />
+                            <span class="name">Bo Jackson</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">It’s not that bad...</span>
+                        </li>
+                        <li class="person" data-chat="person5">
+                            <img src="https://s16.postimg.org/ete1l89z5/img5.jpg" alt="" />
+                            <span class="name">Michael Jordan</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">Wasup for the third time like is
+        you bling bitch</span>
+                        </li>
+                        <li class="person" data-chat="person6">
+                            <img src="https://s30.postimg.org/kwi7e42rh/img6.jpg" alt="" />
+                            <span class="name">Drake</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">howdoyoudoaspace</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="top"><span>To: <span class="name">Dog Woofson</span></span></div>
+                    <div class="chat" data-chat="person1">
+                        <div class="conversation-start">
+                            <span>Today, 6:48 AM</span>
+                        </div>
+                        <div class="bubble you">
+                            Hello,
+                        </div>
+                        <div class="bubble you">
+                            it's me.
+                        </div>
+                        <div class="bubble you">
+                            I was wondering...
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person2">
+                        <div class="conversation-start">
+                            <span>Today, 5:38 PM</span>
+                        </div>
+                        <div class="bubble you">
+                            Hello, can you hear me?
+                        </div>
+                        <div class="bubble you">
+                            I'm in California dreaming
+                        </div>
+                        <div class="bubble me">
+                            ... about who we used to be.
+                        </div>
+                        <div class="bubble me">
+                            Are you serious?
+                        </div>
+                        <div class="bubble you">
+                            When we were younger and free...
+                        </div>
+                        <div class="bubble you">
+                            I've forgotten how it felt before
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person3">
+                        <div class="conversation-start">
+                            <span>Today, 3:38 AM</span>
+                        </div>
+                        <div class="bubble you">
+                            Hey human!
+                        </div>
+                        <div class="bubble you">
+                            Umm... Someone took a shit in the hallway.
+                        </div>
+                        <div class="bubble me">
+                            ... what.
+                        </div>
+                        <div class="bubble me">
+                            Are you serious?
+                        </div>
+                        <div class="bubble you">
+                            I mean...
+                        </div>
+                        <div class="bubble you">
+                            It’s not that bad...
+                        </div>
+                        <div class="bubble you">
+                            But we’re probably gonna need a new carpet.
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person4">
+                        <div class="conversation-start">
+                            <span>Yesterday, 4:20 PM</span>
+                        </div>
+                        <div class="bubble me">
+                            Hey human!
+                        </div>
+                        <div class="bubble me">
+                            Umm... Someone took a shit in the hallway.
+                        </div>
+                        <div class="bubble you">
+                            ... what.
+                        </div>
+                        <div class="bubble you">
+                            Are you serious?
+                        </div>
+                        <div class="bubble me">
+                            I mean...
+                        </div>
+                        <div class="bubble me">
+                            It’s not that bad...
+                        </div>
+                    </div>
+                    <div class="chat" data-chat="person5">
+                        <div class="conversation-start">
+                            <span>Today, 6:28 AM</span>
+                        </div>
+                        <div class="bubble you">
+                            Wasup
+                        </div>
+                        <div class="bubble you">
+                            Wasup
+                        </div>
+                        <div class="bubble you">
+                            Wasup for the third time like is <br />you blind bitch
+                        </div>
+
+                    </div>
+                    <div class="chat" data-chat="person6">
+                        <div class="conversation-start">
+                            <span>Monday, 1:27 PM</span>
+                        </div>
+                        <div class="bubble you">
+                            So, how's your new phone?
+                        </div>
+                        <div class="bubble you">
+                            You finally have a smartphone :D
+                        </div>
+                        <div class="bubble me">
+                            Drake?
+                        </div>
+                        <div class="bubble me">
+                            Why aren't you answering?
+                        </div>
+                        <div class="bubble you">
+                            howdoyoudoaspace
+                        </div>
+                    </div>
+                    <div class="write">
+                        <a href="javascript:;" class="write-link attach"></a>
+                        <input type="text" />
+                        <a href="javascript:;" class="write-link smiley"></a>
+                        <a href="javascript:;" class="write-link send"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="crumbs text-center" style="padding-top: 10%; padding-bottom:5em;">
+			<div class="container">
+				<div class="row">
+					<ul class="btn-group btn-breadcrumb bc-list">
+						<li class="btn btn1">
+							<a href="index.html">
+								<i class="glyphicon glyphicon-home"></i>
+							</a>
+						</li>
+						<li class="btn btn2">
+							<a href="{{ url_for('view_profile', username=user.username) }}">{{user.first_name}} {{user.last_name}}</a>
+						</li>
+						<li class="btn btn3">
+							<a class="breadcrumbtitle" href="single_product.html">Followers</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        <div class="row" style="min-height: 65vh;">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading c-list">
+                    <span class="title">Followers</span>
+                </div>
+
+                <ul class="list-group" id="contact-list">
+                    {% for follower in followers %}
+                    <li class="list-group-item">
+                        <div class="col-xs-12 col-sm-3">
+                             <img src="data:image;base64, {{ follower.profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" style="width:100px !important;" alt="Avatar" class="img-responsive img-circle" alt=" " />
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <span class="name" style="font-size:100% !important;"><a href="{{ url_for('view_profile', username=follower.username) }}">{{ follower.first_name }} {{ follower.last_name}}</a></span><br/>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                    {% else %}
+                    <div class="wthree_main_grid_right_grid" style="margin-right:1em;">
+                        <div style="overflow-y: hidden !important;" class="w3_agileits_main_grid_work_grids">
+                            <h1 style="color: #333A56; text-align:center; margin:1em; font-weight: 0px;
+                                        letter-spacing: 0px;">No Followers</h1>
+                            <div class="clear"> </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+	</div>
+        <!-- //about ends here -->
+        <!--//about bottom-->
+        <!--//about bottom ends here-->
+        <!-- //footer -->
+        <div class="cpy-right" style="position:absolute;">
+            <p>© 2018 Chronicle. All rights reserved | Design by
+                <a href="http://w3layouts.com"> W3layouts.</a>
+            </p>
+        </div>
+    <!-- //home -->
+    <!-- js -->
+
+    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+    <!-- //js -->
+    <!--search jQuery-->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <!--search jQuery-->
+    <!-- cart-js -->
+    <script src="{{url_for('static', filename='js/minicart.js')}}"></script>
+    <script>
+        chr.render();
+
+        chr.cart.on('new_checkout', function (evt) {
+            var items, len, i;
+
+            if (this.subtotal() > 0) {
+                items = this.items();
+
+                for (i = 0, len = items.length; i < len; i++) {}
+            }
+        });
+    </script>
+    <!-- //cart-js -->
+        <script src="{{url_for('static', filename='js/easyResponsiveTabs_profile.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //Horizontal Tab
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function(event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+        });
+    </script>
+    <!-- light-case -->
+        <script src="{{url_for('static', filename='js/lightcase.js')}}"></script>
+        <script src="{{url_for('static', filename='js/jquery.events.touch.js')}}"></script>
+        <script>
+            $('.showcase').lightcase();
+        </script>
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
+    <!-- //fixed-scroll-nav-js -->
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+    <!-- start-smooth-scrolling -->
+    <script src="{{url_for('static', filename='js/move-top.js')}}"></script>
+    <script src="{{url_for('static', filename='js/easing.js')}}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script>
+        $('#directmsg').click(function() {
+            $('html').css({
+                'overflow': 'hidden',
+                'height': '100%',
+                'margin': '0'
+            });
+            $('body').css({
+                'overflow': 'hidden',
+                'height': '100%',
+                'margin': '0',
+                '-ms-scroll-limit': '0 0 0 0'
+            });
+            $('#dir_content').css({
+                'display': 'block'
+            });
+            $('#cpyright').css({
+                'position': 'relative'
+            });
+        });
+    </script>
+    <script>
+        $('#return').click(function() {
+            $('html').css({
+                'overflow': 'visible',
+                'height': '100%',
+                'margin': '0'
+            });
+            $('body').css({
+                'overflow': 'visible',
+                'height': '100%',
+                'margin': '0',
+                '-ms-scroll-limit': '100px 100px 100px 0px'
+            });
+            $('#dir_content').css({
+                'display': 'none'
+            });
+            $('#cpyright').css({
+                'position': 'absolute'
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            $(document).on('click', '.searchbutton', function() {
+                var username = $(#username).val();
+                var search = $('#search').val();
+                alert(username);
+
+                req = $.ajax({
+                    url : '/profile/search/book',
+                    type : 'POST',
+                    data : { search : search, username : username }
+                });
+
+                req.done(function(data) {
+                    $('#content').html(data);
+
+                });
+
+
+            });
+
+        });
+    </script>
+    <script>
+        $(function () {
+    /* BOOTSNIPP FULLSCREEN FIX */
+    if (window.location == window.parent.location) {
+        $('#back-to-bootsnipp').removeClass('hide');
+    }
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('#fullscreen').on('click', function(event) {
+        event.preventDefault();
+        window.parent.location = "http://bootsnipp.com/iframe/4l0k2";
+    });
+    $('a[href="#cant-do-all-the-work-for-you"]').on('click', function(event) {
+        event.preventDefault();
+        $('#cant-do-all-the-work-for-you').modal('show');
+    })
+
+    $('[data-command="toggle-search"]').on('click', function(event) {
+        event.preventDefault();
+        $(this).toggleClass('hide-search');
+
+        if ($(this).hasClass('hide-search')) {
+            $('.c-search').closest('.row').slideUp(100);
+        }else{
+            $('.c-search').closest('.row').slideDown(100);
+        }
+    })
+
+    $('#contact-list').searchable({
+        searchField: '#contact-list-search',
+        selector: 'li',
+        childSelector: '.col-xs-12',
+        show: function( elem ) {
+            elem.slideDown(100);
+        },
+        hide: function( elem ) {
+            elem.slideUp( 100 );
+        }
+    })
+});
+
+    </script>
+        <script>
+        $(document).ready(function() {
+            refresh();
+        });
+
+        function refresh()
+        {
+            setTimeout( function() {
+              req = $.ajax({
+                    url : 'http://localhost:8042/update',
+                    type : 'GET'
+                });
+                req.done(function(data) {
+
+                    //$('#memberNumber'+member_id).text(data.member_num);
+                    $('#new').html(data);
+
+                });
+              refresh();
+            }, 20000);
+        }
+    </script>
+    <script src="{{url_for('static', filename='js/ratings.js')}}"></script>
+    <script src="{{url_for('static', filename='js/SmoothScroll.min.js')}}"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- about bottom grid Numscroller -->
+
+    <script src="{{url_for('static', filename='js/numscroller-1.0.js')}}"></script>
+    <script src="{{url_for('static', filename='js/directmsg.js')}}"></script>
+    <!-- //about bottom grid Numscroller -->
+    <!-- Bootstrap core JavaScript
+ ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+</body>
+
+</html>

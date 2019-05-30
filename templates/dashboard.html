@@ -1,0 +1,641 @@
+{% extends 'base/base-dashboard.html' %}
+{% block notifications %}
+    <li class="dropdown" id="new">
+      <a href="#" onmouseover="mark_read();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if unread != 0 %}<span style="    position: absolute;
+    top: 0;
+    right: 8px;
+    width: 2.1em;
+    height: 2.1em;
+    font-size: 10px;
+    background: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    text-align: center;">{{unread}}</span>{% endif %}<span class="fa fa-bell nav-icon" aria-hidden="true">
+      </span></a>
+      <ul class="dropdown-menu notify-drop" style="left:auto; right:0;">
+        <div class="notify-drop-title">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
+                <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+            </div>
+        </div>
+        <!-- end notify title -->
+        <!-- notify content -->
+        <div class="drop-content">
+            {% for notification in notifications %}
+            <li {% if notification.unread is none %} style="background-color:#e8e8e8; {% endif %}">
+                <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                {% if notification.type == 'owner_borrow_return_verification' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'renter_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_one_day' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'owner_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type == 'borrower_borrow_today' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Book must be returned today. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. Leave a rating.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_returned_successful' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Thank you for returning the book.
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">Leave a rating</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+
+                {% elif notification.type in 'borrower_borrow_return_' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have accepted the request of <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for your
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_code', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_request_accepted' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        Your request has been accepted by<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                        Click <a href="{{ url_for('verification_input', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrower_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have borrowed<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_borrow_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has borrowed your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have rented<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_rent_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has rented your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        You have purchased <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'owner_purchased_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has purchased your book
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'borrow_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'rent_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'purchase_request' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'user_follow' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has followed you.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% elif notification.type == 'follower_new_book' %}
+                    <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                        <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has added a new
+                        <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                        <i class="fa fa-dot-circle-o"></i></a>
+                    <hr>
+                    <p class="time">{{notification.time}}</p>
+                    </div>
+                {% endif %}
+
+            </li>
+            {% endfor %}
+        </div>
+            <div class="notify-drop-footer text-center">
+                <a href="{{ url_for('notifications_all') }}">View all</a>
+            </div>
+        </ul>
+    </li>
+{% endblock %}
+
+{% block content %}
+
+            <div class='banner-text split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side' style="z-index:-10">
+              <div>
+                <div class='text-content'>
+
+                </div>
+
+              </div>
+            </div>
+            <div class='banner-text split-pane col-xs-6 col-sm-6 col-lg-6 frontend-side'>
+              <div>
+                <div class='text-content'>
+                  <div class="bold"></div>
+                  <div class='big'>BOOKSHELF</div>
+                </div>
+                <a href="{{ url_for('addbook') }}" class='button'>
+                  Add your own Book
+                </a>
+              </div>
+            </div>
+            <div id='split-pane-or'>
+              <div>
+              </div>
+            </div>
+        </div>
+        <!-- //banner -->
+        <!-- about -->
+        <div class="about-bottom" style="z-index:-10;">
+            <div class="container-fluid">
+                <div class="jumbotron" style="">
+                    <h4 class="rad-txt">
+                        <a href="{{ url_for('store', page_num=1) }}" class="btn btn-success btn-view pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
+                        <span class="big-tab pull-left">Suggestion</span>
+                        <ul class="nav nav-tabs dashtab pull-left">
+                            <li class="active btn btn-success btntab"><a data-toggle="tab" href="#toprated" style="color: white;">Top Rated</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#menu1" style="color: white;">Latest Books</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#menu2" style="color: white;">Newly Added</a></li>
+                        </ul>
+                    </h4>
+                </div>
+            </div>
+            <div class="tab-content" style="margin-left:6em; z-index:-10;">
+                    <!-- product-sec1 -->
+                    <div id="toprated" class="product-sec1 tab-pane fade in active" style="margin-right: 6em;">
+                        <!-- row1-->
+                        {% if books3 %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in books3 %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                    </div>
+                        <!-- //row2 -->
+                        <!-- row3 -->
+
+                    <div id="menu1" class="product-sec1 tab-pane" style="margin-right: 6em;">
+                        <!-- row1-->
+                        {% if books %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in books %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                    </div>
+                    <div id="menu2" class="product-sec1 tab-pane fade" style="margin-right:6em;">
+                        <!-- row1-->
+                        {% if books2 %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in books2 %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                    </div>
+                </div>
+                        <!-- //row3 -->
+            </div>
+						<!-- //product-sec1 -->
+						<div class="clearfix"></div>
+        </div>
+        <!-- //about ends here -->
+        <!-- about bottom -->
+        <div class="about-bottom" style="z-index:-10;">
+            <div class="container-fluid">
+                <div class="jumbotron">
+                    <h4 class="rad-txt">
+                        <a href="{{ url_for('store', page_num=1) }}" class="btn btn-success btn-view pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
+                        <span class="big-tab pull-left">Latest</span>
+                        <ul class="nav nav-tabs dashtab pull-left">
+                            <li class="active btn btn-success btntab"><a data-toggle="tab" href="#action" style="color: white;">Action</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#drama" style="color: white;">Drama</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#horror" style="color: white;">Horror</a></li>
+                        </ul>
+                    </h4>
+                </div>
+            </div>
+                <!-- about-bottom grid1 -->
+                <div class="tab-content tab2" style="margin-left:6em;">
+                    <!-- product-sec1 -->
+                    <div id="action" class="product-sec1 tab-pane fade in active" style="margin-right: 6em;">
+                        <!-- row1-->
+                        {% if actionbooks %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in actionbooks %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                        <!-- //row1 -->
+                        <!-- row2 -->
+                    </div>
+                        <!-- //row2 -->
+                        <!-- row3 -->
+
+                    <div id="drama" class="product-sec1 tab-pane" style="margin-right: 6em;">
+                        <!-- row1-->
+                        {% if dramabooks %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in dramabooks %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                    </div>
+                    <div id="horror" class="product-sec1 tab-pane fade" style="margin-right: 6em;">
+                        <!-- row1-->
+                        {% if horrorbooks %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in horrorbooks %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                    </div>
+                </div>
+        </div>
+         <div class="about-bottom" style="z-index:-10; ">
+            <div class="container-fluid">
+                <div class="jumbotron">
+                    <h4 class="rad-txt">
+                        <a href="{{ url_for('store', page_num=1) }}" class="btn btn-success btn-view pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
+                        <span class="big-tab pull-left">Category</span>
+                        <ul class="nav nav-tabs dashtab pull-left">
+                            <li class="active btn btn-success btntab"><a data-toggle="tab" href="#fiction" style="color: white;">Fiction</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#nonfiction" style="color: white;">Non-Fiction</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#academics" style="color: white;">Academics</a></li>
+                        </ul>
+                    </h4>
+                </div>
+            </div>
+                <!-- about-bottom grid1 -->
+                <div class="tab-content tab2" style="margin-left:6em;">
+                    <!-- product-sec1 -->
+                    <div id="fiction" class="product-sec1 tab-pane fade in active" style="margin-right: 6em;">
+                        <!-- row1-->
+                        {% if fictionbooks %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in fictionbooks %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                        <!-- //row1 -->
+                        <!-- row2 -->
+                    </div>
+                        <!-- //row2 -->
+                        <!-- row3 -->
+
+                    <div id="nonfiction" class="product-sec1 tab-pane" style="margin-right: 6em;">
+                        <!-- row1-->
+                        {% if nonficbooks %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in nonficbooks %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                    </div>
+                    <div id="academics" class="product-sec1 tab-pane fade" style="margin-right: 6em;">
+                        <!-- row1-->
+                            {% if acadbooks %}
+                        <section class="center slider" data-sizes="10vw">
+                        {% for book2 in acadbooks %}
+                            <div>
+                                <div class="product-chr-info chr">
+                                    <div class="thumbnail" style="margin:auto;">
+                                        <div class="book-overlay">
+                                            <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                            <div class="book-text">
+                                                <h4>{{book2.totalRate}}/5.0</h4>
+                                                <h4>{{ book2.genre }}</h4>
+                                                <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                            </div>
+                                        </div>
+                                        <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                            <img onerror="this.src='{{url_for('static', filename='images/default_book.jpeg')}}'" src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        </a>
+                                    </div>
+                                    <div class="caption" style="text-align:center; margin-right:1em; margin-left:1em;">
+                                        <h4>{{ book2.title }}</h4>
+                                        <p class="author" style="text-align:center !important;">{{ book2.author_name}}</p>
+                                        <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </section>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                        {% endif %}
+                    </div>
+                </div>
+        </div>
+                    <div class="clearfix" style="z-index:-10;"></div>
+            <!-- //about container ends here-->
+        <!--//about bottom ends here-->
+{% endblock %}

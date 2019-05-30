@@ -1,0 +1,155 @@
+{% extends 'base/landing-page.html' %}
+
+{% block content %}
+        <!-- //navbar ends here -->
+        <!-- signin and signup form -->
+<div class="login-form section text-center" style="min-height:95vh; padding-bottom:60px;">
+    <div class="container">
+        <h4 class="rad-txt">
+            <span class="abtxt1">Sign in</span>
+            <span class="abtext">sign up</span>
+        </h4>
+        <form id="signupform" class="form-horizontal" action="{{ url_for('signup') }}" method="post">
+            <div id="signupbox" style="display:none; margin-top:50px" class="mainbox loginbox">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign Up</div>
+                        <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                            <a id="signinlink" href="#" onClick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                            <h3>Account Information</h3>
+                            <br>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-3 control-label">Username</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="text" class="form-control" name="username" placeholder="Username" value="{{username}}" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-3 control-label">Password</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="password" class="form-control" name="password" placeholder="Password" value="{{password}}" required="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <!-- Button -->
+                                <div class="signup-btn">
+                                    <a href="#" class="btn btn-success" style="    color: white;
+                                                                                    width: 33%;
+                                                                                    background: #333A56;"
+                                       onClick="$('#signupbox').hide(); $('#signupbox1').show()">
+                                            Next
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div id="signupbox1" style="display:block; margin-top:50px" class="mainbox loginbox">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign Up</div>
+                        <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                            <a href="{{ url_for('login') }}">Sign In</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                            <h3>Personal Information</h3>
+                            <br>
+                            <div class="form-group">
+                                    <label class="col-md-3 col-sm-3 col-xs-3 control-label">Full Name</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input type="text" class="form-control" name="first_name" placeholder="First Name" required="">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="">
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-3 control-label">Gender</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <select class="form-control" name="gender" form="signupform" required="">
+                                      <option value="Male">Male</option>
+                                      <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-3 control-label">Birthday</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="date" class="form-control" name="birth_date" placeholder="Birthday" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Button -->
+                                <div class="signup-btn">
+                                    <a href="#" class="btn btn-success" style="    color: white;
+                                                                                    width: 33%;
+                                                                                    background: #333A56;"
+                                       onClick="$('#signupbox1').hide(); $('#signupbox2').show()">
+                                            Next
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div id="signupbox2" style="display:none; margin-top:50px" class="mainbox loginbox">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign Up</div>
+                        <div style="float:right; font-size: 85%; position: relative; top:-10px">
+                            <a href="{{ url_for('login') }}">Sign In</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                            <h3>Personal Information</h3>
+                            <br>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-3 control-label">Contact Number</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="text" class="form-control" name="contact_number" placeholder="Contact Number" required pattern="[0-9]{11}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-3 control-label">Address</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="text" class="form-control" name="address" placeholder="Address" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-3 control-label">Email</label>
+                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                    <input type="text" class="form-control" name="email" placeholder="Email Address" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Button -->
+                                <div class="signup-btn">
+                                    <a href="#" class="btn btn-success" style="    color: white;
+                                                                                    width: 33%;
+                                                                                    background: #333A56;"
+                                       onClick="$('#signupbox2').hide(); $('#signupbox1').show()">
+                                            Back
+                                    </a>
+                                    <button id="btn-signup" type="submit" onclick="getLocation();" form="signupform"  class="btn btn-info">
+                                            <i class="icon-hand-right"></i>Next</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <footer class="cpy-right footer">
+                <p>© 2018 Chronicle. All rights reserved | Design by
+                    <a href="http://w3layouts.com"> W3layouts.</a>
+                </p>
+    </footer>
+    <!--//signin and signup form ends here-->
+{% endblock %}

@@ -1,0 +1,811 @@
+
+
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="zxx" style="height:100% !important;">
+
+<head>
+    <title>Bookshelf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="{{url_for('static', filename='css/bootstrap.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- shop css -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/directmsg.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/slick.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/slick-theme.css')}}">
+    <link href="{{url_for('static', filename='css/shop.css')}}" type="text/css" rel="stylesheet" media="all">
+    <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="{{url_for('static', filename='css/font-awesome.css')}}" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    <!-- logo -->
+    <link href="//fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <!-- titles -->
+    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+    <!-- body -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
+      <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .slick-slide img {
+      width: 100%;
+    }
+
+  </style>
+    <!-- //online-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div id="home" style="height:430px;">
+        <!-- header -->
+        <!-- navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="main-nav">
+                <div class="container">
+
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Chronicle</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1>
+                            <a class="navbar-brand" href="{{ url_for('home') }}">Bookshelf</a>
+                        </h1>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse nav-right">
+                        <ul class="nav navbar-nav navbar-left cl-effect-15">
+                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                            <li class="hidden">
+                                <a class="page-scroll" href="#page-top"></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Genres
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu multi-column columns-3" style="left: auto;
+                                                right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Action', page_num=1) }}">Action</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Adventure', page_num=1) }}">Adventure</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Drama', page_num=1) }}">Drama</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Horror', page_num=1) }}">Horror</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mystery', page_num=1) }}">Mystery</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mythology', page_num=1) }}">Mythology</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Non-Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Biography', page_num=1) }}">Biography</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Essay', page_num=1) }}">Essay</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Journalism', page_num=1) }}">Journalism</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Personal Narrative', page_num=1) }}">Personal Narrative</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Reference Book', page_num=1) }}">Reference Book</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Speech', page_num=1) }}">Speech</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Educational</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='English', page_num=1) }}">English</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Math', page_num=1) }}">Math</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='History', page_num=1) }}">History</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Science', page_num=1) }}">Science</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">books
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ url_for('addbook') }}">Add a book</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('add_unpublishedbook') }}">Add unpublished book</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('store', page_num=1) }}">Browse</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('wishlist') }}">Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('waitinglist') }}">Your Requests</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('requestlist') }}">Book Requests</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('profile') }}" title="Profile">
+                                    <span class="fa fa-user nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('message_page') }}" title="Direct Messages">
+                                    <span class="fa fa-envelope nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <!-- nofication -->
+                                <li class="dropdown" id="new">
+                                  <a href="#" onmouseover="mark_read();" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if unread != 0 %}<span style="    position: absolute;
+                                top: 0;
+                                right: 8px;
+                                width: 2.1em;
+                                height: 2.1em;
+                                font-size: 10px;
+                                background: red;
+                                border: 1px solid red;
+                                border-radius: 50%;
+                                text-align: center;">{{unread}}</span>{% endif %}<span class="fa fa-bell nav-icon" aria-hidden="true">
+                                  </span></a>
+                                  <ul class="dropdown-menu notify-drop" style="left:auto; right:0;">
+                                    <div class="notify-drop-title">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+                                        </div>
+                                    </div>
+                                    <!-- end notify title -->
+                                    <!-- notify content -->
+                                    <div class="drop-content">
+                                        {% for notification in notifications %}
+                                        <li {% if notification.unread is none %} style="background-color:#e8e8e8; {% endif %}">
+                                            <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                                            {% if notification.type == 'owner_borrow_return_verification' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'borrower_returned_request' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+
+                                            {% elif notification.type == 'borrower_borrow_one_day' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'owner_borrow_one_day' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'renter_rent_one_day' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Book must be returned tomorrow. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'owner_rent_one_day' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Book must be returned tomorrow. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+
+                                            {% elif notification.type == 'owner_borrow_today' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Book must be returned today. Verify that <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. <a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+
+                                            {% elif notification.type == 'borrower_borrow_today' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Book must be returned today. Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'owner_returned_successful' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a>has returned your
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>. Leave a rating.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'borrower_returned_successful' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Thank you for returning the book.
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">Leave a rating</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+
+                                            {% elif notification.type in 'borrower_borrow_return_' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Please confirm if you have returned <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'owner_request_accepted' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    You have accepted the request of <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for your
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                                                    Click <a href="{{ url_for('verification_code', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'borrower_request_accepted' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    Your request has been accepted by<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> for
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.
+                                                    Click <a href="{{ url_for('verification_input', username=notification.borrower, book_id=notification.book_id) }}">here</a> for details.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'borrower_borrow_book' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    You have borrowed<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'owner_borrow_book' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has borrowed your book
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'user_rent_book' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    You have rented<a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'owner_rent_book' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has rented your book
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'user_purchased_book' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    You have purchased <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}'s</a>
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'owner_purchased_book' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has purchased your book
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'borrow_request' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'rent_request' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'purchase_request' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has sent you a <a href="{{ url_for('requestlist') }}">request.</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'user_follow' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has followed you.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% elif notification.type == 'follower_new_book' %}
+                                                <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                    <a href="{{ url_for('view_profile', username=notification.borrower) }}">{{notification.borrower_fname}} {{notification.borrower_lname}}</a> has added a new
+                                                    <a href="{{ url_for('viewbook', username=notification.owner_username, book_id=notification.book_id) }}">book</a>.<a href="" class="rIcon">
+                                                    <i class="fa fa-dot-circle-o"></i></a>
+                                                <hr>
+                                                <p class="time">{{notification.time}}</p>
+                                                </div>
+                                            {% endif %}
+
+                                        </li>
+                                        {% endfor %}
+                                    </div>
+                                        <div class="notify-drop-footer text-center">
+                                            <a href="{{ url_for('notifications_all') }}">View all</a>
+                                        </div>
+                                    </ul>
+                                </li>
+                            <!--/ notification -->
+                            <!-- search-bar -->
+                        <div class="search-bar-agileits">
+                            <div class="cd-main-header">
+                                <ul class="cd-header-buttons">
+                                    <li>
+                                        <a class="cd-search-trigger" href="#cd-search">
+                                            <span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- cd-header-buttons -->
+                            </div>
+                            <div id="cd-search" class="cd-search">
+                                <form action="{{ url_for('store_search', page_num=1) }}" method="post">
+                                    <input name="search" type="search" placeholder="Type and Hit Enter...">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- //search-bar ends here -->
+                            <!-- logout -->
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">
+                                        <b class="caret" style="border-left: 8px solid transparent;
+                                                            border-right: 8px solid transparent;
+                                                            border-top: 8px dashed"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ url_for('activity_logs') }}">activity logs</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url_for('logout') }}">logout</a>
+                                        </li>
+                                    </ul>
+                            </li>
+                        <!-- //logout -->
+                        </ul>
+
+                        <!-- shopping cart -->
+
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- /.container -->
+            </div>
+        </nav>
+        <!-- //navbar ends here -->
+        <!-- banner -->
+        <!-- //banner -->
+        <!-- about -->
+
+        <div id="message">
+            <div class="wrappermsg" id="dir_content" style="display:block; position:absolute;">
+                <div class="containermsg" style="width:100%; height:75%">
+                    <div class="head">
+                        <p class="directmsg1">Direct Messages</p>
+                    </div>
+
+                    <div class="left" style="width:20%;">
+                        <ul class="people">
+                            <li class="person" data-chat="person999" style="padding:0 !important; background-color:#fff !important;">
+                                <button style="width: 100%;
+    height: 100%;
+    padding: 10%;     background: #e8e8e8;
+    border: 0px;">Create new message</button>
+                                <span class="name"></span>
+                                <span class="time"></span>
+                                <span class="preview"></span>
+                            </li>
+                            {% for message in inboxes %}
+                    <li class="person" data-chat="person{{message.inbox_id}}">
+                        <img src="data:image;base64, {{ message.profilepic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" alt="" />
+                        <input type="text" name="id" id="personid{{ message.username }}" value="{{message.inbox_id}}" style="width: 75%; display:none;" required/>
+                        <span class="name">{{message.username}}</span>
+                        <span class="preview">{{message.latest}}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="right" style="width:80%;">
+                <div class="top" style="margin-bottom:1em;"><span>To: <input type="text" name="name" id="user" {% if username %} value="{{username}}" {% endif %} required/></span></div>
+                <div class="help" id="help" style="overflow-y:auto; max-height: 480px;">
+                <div class="chat" data-chat="person999">
+
+                </div>
+
+                {% for message in messages %}
+                <div style="border-width:0px; border-color:0px; border:0px; height:auto; padding:0 35px 20px;" class="chat" data-chat="person{{message.inbox_id}}">
+                    {% if message.from == 'Me' %}
+                    <div class="bubble me" style="    animation-duration: 0.15s;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 600px;
+        word-break: break-all;">
+                        {{message.content}}
+                    </div>
+                    <div style="font-size:10px; text-align: right;">{{message.date}}</div>
+
+                    {% elif message.from == 'Other_user' %}
+                    <div class="bubble you" style="    animation-duration: 0.15s;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 600px;
+        word-break: break-all;">
+                        {{message.content}}
+
+                    </div>
+                    <div style="font-size:10px;">{{message.date}}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                </div>
+                        <div class="write">
+                            <input type="text" id="content" name="content" style="width: 75%;" required/>
+                            <button class="btn pull-right" id="sendbutton" style="padding: 10px 12px;">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //about ends here -->
+        <!--//about bottom-->
+        <!--//about bottom ends here-->
+        <!-- //footer -->
+        <div class="cpy-right" id="cpyright">
+            <p>© 2018 Chronicle. All rights reserved | Design by
+                <a href="http://w3layouts.com"> W3layouts.</a>
+            </p>
+        </div>
+    </div>
+</body>
+    <!-- //home -->
+    <!-- js -->
+
+    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+    <!-- //js -->
+    <!--search jQuery-->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <!--search jQuery-->
+    <!-- cart-js -->
+    <!-- //cart-js -->
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
+    <!-- //fixed-scroll-nav-js -->
+    <!-- dropdown nav -->
+    <script>
+        function mark_read() {
+            var ajax = $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/mark-read",
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
+            success : function(data) {
+                        $('#login-alert').html("worked");
+                    },
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+    <!-- start-smooth-scrolling -->
+    <script src="{{url_for('static', filename='js/move-top.js')}}"></script>
+    <script src="{{url_for('static', filename='js/easing.js')}}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+    $('.chat[data-chat=person1]').addClass('active-chat');
+    $('.person[data-chat=person1]').addClass('active');
+    $(document).ready(function() {
+        var elem = document.getElementById('help');
+        elem.scrollTop = elem.scrollHeight;
+    });
+
+        $('.left .person').mousedown(function(){
+        if ($(this).hasClass('.active')) {
+            return false;
+        } else {
+            var findChat = $(this).attr('data-chat');
+            var personName = $(this).find('.name').text();
+            $('#user').val(personName);
+            $('.chat').removeClass('active-chat');
+            $('.left .person').removeClass('active');
+            $(this).addClass('active');
+            $('.chat[data-chat = '+findChat+']').addClass('active-chat');
+        }
+    });
+
+    $(document).ready(function() {
+
+        $(document).on('click', '#sendbutton', function() {
+
+            var name = $('#user').val();
+            var content = $('#content').val();
+            var id = $('#personid'+name).val();
+
+            req = $.ajax({
+                url : 'http://localhost:8080/send_message',
+                type : 'POST',
+                data : { name : name, content : content, id : id}
+            });
+
+            req.done(function(data) {
+                //$('#memberNumber'+member_id).text(data.member_num);
+                $('#message').html(data);
+
+            });
+
+
+        });
+
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script>
+        $('#return').click(function() {
+            $('html').css({
+                'overflow': 'visible',
+                'height': '100%',
+                'margin': '0'
+            });
+            $('body').css({
+                'overflow': 'visible',
+                'height': '100%',
+                'margin': '0',
+                '-ms-scroll-limit': '100px 100px 100px 0px'
+            });
+            $('#dir_content').css({
+                'display': 'none'
+            });
+            $('#cpyright').css({
+                'position': 'absolute'
+            });
+        });
+    </script>
+      <script src="{{url_for('static', filename='js/slick.js')}}" type="text/javascript" charset="utf-8"></script>
+      <script type="text/javascript">
+        $(document).on('ready', function() {
+          $(".vertical-center-4").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+            slidesToShow: 4,
+            slidesToScroll: 2
+          });
+          $(".vertical-center-3").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+          });
+          $(".vertical-center-2").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+            slidesToShow: 2,
+            slidesToScroll: 2
+          });
+          $(".vertical-center").slick({
+            dots: true,
+            vertical: true,
+            centerMode: true,
+          });
+          $(".vertical").slick({
+            dots: true,
+            vertical: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+          });
+          $(".regular").slick({
+            dots: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+          });
+          $(".center").slick({
+            dots: true,
+            infinite: true,
+            centerMode: true,
+            slidesToShow: 5,
+            slidesToScroll: 3
+          });
+          $(".variable").slick({
+            dots: true,
+            infinite: true,
+            variableWidth: true
+          });
+          $(".lazy").slick({
+            lazyLoad: 'ondemand', // ondemand progressive anticipated
+            infinite: true
+          });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            refresh();
+        });
+
+        function refresh()
+        {
+            setTimeout( function() {
+              req = $.ajax({
+                    url : 'http://localhost:8080/update',
+                    type : 'GET'
+                });
+                req.done(function(data) {
+
+                    //$('#memberNumber'+member_id).text(data.member_num);
+                    $('#new').html(data);
+
+                });
+              refresh();
+            }, 20000);
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            var elem = document.getElementById('help');
+            elem.scrollTop = elem.scrollHeight;
+        });
+        $(document).ready(function() {
+            refresh();
+        });
+
+        function refresh()
+        {
+            setTimeout( function() {
+              req = $.ajax({
+                    url : 'http://localhost:8080/update_message',
+                    type : 'GET'
+                });
+                req.done(function(data) {
+
+                    //$('#memberNumber'+member_id).text(data.member_num);
+                    $('#dir_content').html(data);
+                    var elem = document.getElementById('help');
+                      elem.scrollTop = elem.scrollHeight;
+
+                });
+              refresh();
+            }, 60000);
+        }
+    </script>
+    <script src="{{url_for('static', filename='js/SmoothScroll.min.js')}}"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- about bottom grid Numscroller -->
+
+    <script src="{{url_for('static', filename='js/numscroller-1.0.js')}}"></script>
+    <script src="{{url_for('static', filename='js/directmsg.js')}}"></script>
+    <!-- //about bottom grid Numscroller -->
+    <!-- Bootstrap core JavaScript
+ ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+</body>
+
+</html>

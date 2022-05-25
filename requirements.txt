@@ -55,7 +55,7 @@ psycopg2-binary==2.7.6.1
 pyasn1==0.4.5
 pycparser==2.19
 pycrypto==2.6.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 PyMySQL==0.9.2
 pyparsing==2.2.2
 PySocks==1.6.8
